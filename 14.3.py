@@ -26,16 +26,17 @@ mySocket.listen(5)
 
 # Accept connections, read incoming data, and answer back an HTML page
 #  (in an infinite loop)
-try: 
+try:
 	while True:
 		print 'Waiting for connections'
 		(recvSocket, address) = mySocket.accept()
 		print 'HTTP request received:'
 		print recvSocket.recv(1024)
-		y = random.randint(10,900000)
+		y = random.randint(10, 900000)
 		print y
 		recvSocket.send("HTTP/1.1 200 OK\r\n\r\n" +
-		                "<html><body><h1>Hola <a href= 'http://localhost:1234/ " + str(y) + "'>Dame otra</a></h1></body></html>" +
+		                "<html><body><h1>Hola <a href= 'http://localhost:1234/ "
+						 + str(y) + "'>Dame otra</a></h1></body></html>" +
 		                "\r\n")
 		recvSocket.close()
 except KeyboardInterrupt:
